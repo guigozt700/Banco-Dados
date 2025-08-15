@@ -1,0 +1,22 @@
+Rastreabilidade
+Customização em massa
+Aumento de qualidade
+Reução de custo
+
+Virtualização:
+- Representação digital do processo ou produto, simulando suas interfaces, tempos, velocidade e consumos para identificar gargalos
+
+Sistema ciberfisico:
+- Forma de simular o processo produtico no campo virtual sem que o fisico seja comprometido
+
+Internt de serviço (IoS)
+- Serviços e sistemas disponibilzados por meio da internet
+  Ex: Aplicativo alerta se seu carro precis de uma revisão
+
+Industria 4.0:
+- Big Data
+- IoT
+- Computação em nuvem
+- Robótica
+- Seguraça digital
+- Manufatura aditiva
