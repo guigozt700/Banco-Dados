@@ -1,0 +1,77 @@
+Tipo de Relação     |   Tabela própria
+
+0:1 <-> 0:1         |   Pode ser usada
+0:1 <-> 1:1         |   Não usar
+1:1 <-> 1:1         |   Não usar
+
+====================================================================================
+
+Relação 0:1 <-> 0:1
+-> Participação opcional nos dois lados (guarda apenas quando existe relacionamento)
+
+Homem -------> Casamento <-------- Mulher
+        0:1                  0:1
+
+Nenhum ou um homem pode se casar com 1 Mulher
+Nenhuma ou uma mulher pode se casar com 1 Homem
+
+====================================================================================
+
+Relação 0:1 <-> 1:1
+-> Um lado é obrigatório
+-> Tabela própria não é preciso, pois sempre existirá a relação para um dos lados
+-> FK do lado 0:1 apontando para o lado 1:1
+
+Correntista <-------- Cartão magnético
+        1:1          0:1
+
+Nenhum ou um cartão pode ter um Correntista
+Um correntista sempre terá um cartão
+
+====================================================================================
+
+Relação 1:1 <-> 1:1
+-> Ambos são obrigatórios
+-> Tabela própria não é preciso, pois sempre terá o relacionamento
+
+Tipo de relacionamento  |     Tabela própria
+0:1 <-> 0:n             |   Pode ser usada
+0:1 <-> 1:n             |   Pode ser usada
+1:1 <-> 0:n             |   Não usar
+1:1 <-> 1:n             |   Não usar
+
+====================================================================================
+
+Relação 1:n
+
+Departamento --------> Lotação <----------- Empregado
+                1:1                 0:n 
+
+Um departamento tem muitos empregados (uma locação)
+Um empregado pode ou não ter muitos departamentos (muitas locações)
+
+====================================================================================
+
+Tipo de relacionamento  |     Tabela própria
+0:n <-> 0:n             |   Usar
+0:n <-> 1:n             |   Usar
+1:n <-> 1:n             |   Usar
+
+Relação n:n
+
+Engenheiro ---------> Atuação <--------- Projeto
+              0:n                0:n
+
+Um engenheiro pode ou não ter várias atuação (Projetos)
+Um projeto pode ou não ter varias atuação (Engenheiro)
+
+
+Exemplo:
+
+Curso -------> Matricula <--------- Aluno
+        1:n                 1:n
+
+UM curso tem um ou muitos alunos (matriculas)
+Um aluno tem uma ou várias matriculas (curso) 
+
+
