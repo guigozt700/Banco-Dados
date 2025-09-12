@@ -1,0 +1,75 @@
+Views:
+-> Tabela virtual baseada em um Select
+-> Simplifica a percepção de cada usuário
+-> Segurança, permitindo acesso restrito a certas funcionalidades ao usuario
+-> Fornecer interface compativeis a outras versões
+
+-- Criar View ------------------------------------------
+
+Create View 
+	v_Empregado as	--Nome da View
+select
+	NomeEmpr, DtNascimento, NomeDepto --Colunas
+from
+	Empregado	--Da tabela empregado
+inner join
+	Departamento	--Junta com Departamento
+on
+	Departamento.CodDepto = Empregado.CodDepto	--Onde a coluna Departamento.CodDepto seja igual a Empregado.CodDepto
+
+select * from v_Empregado
+
+-- Alterar View ------------------------------------------
+
+alter view 
+	v_Empregado as
+select 
+	NomeEmpr, NomeDepto
+from
+	Empregado
+inner join
+	Departamento
+on
+	Departamento.CodDepto = Empregado.CodDepto
+
+
+-- Criação de variavis -------------------------
+
+declare @codigo int, @nome varchar(50)
+set @codigo = 1
+set @nome = 'Manuel'
+
+declare @codigo2 int = 10
+declare @nome2 varchar(50) = 'José Maria'
+
+select @nome2 as variavel
+
+
+Funções:
+
+ASCII(string)
+-> Vai retonar o codigo numérico do primeiro caractere
+
+Char(int)
+-> Vai retonar p caracter referente a um número
+
+Charindex(substring, string, posição inicial)
+-> Vai retornar a posição da substring buscada na substring
+
+Left(string, n)
+-> Retorna os n primeiros caratcteres a esquerda
+
+Len(string)
+-> Retorna a quantidade(tamanho)
+
+LTRIM(string)
+-> Remove os espaços em branco a esquerda
+
+PATINDEX(%padrão%, string)
+-> Retorna a posição do primeiro caratere do padrão da string
+
+REVERSE(string)
+-> Retorna a string invertida
+
+RIGHT(string, int)
+-> Retorna os caracteres a direita da string, int define a partir de qual numero
