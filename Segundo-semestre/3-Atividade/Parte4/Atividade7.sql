@@ -148,8 +148,6 @@ FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 
 );
 
-
-
 -- Employees
 
 INSERT INTO Employees VALUES
@@ -224,22 +222,54 @@ INSERT INTO OrderDetails VALUES
 
 (3, 2, 2, 5); -- Pedido 2 -> Suco
 
------------------------------------------
---63
-create view
-	v_totalPedidos as
-select
-	o.orderId, o.orderDate, e.firstName, sum(od.quantity * p.price) as Total
-from 
-	Orders o
-join
-	Employees e on o.EmployeeID = e.EmployeeID
-join
-	OrderDetails od on o.OrderID = od.OrderID
-join
-	Products p on od.ProductID = p.ProductID
-group by
-	o.OrderID, o.OrderDate, e.FirstName
+-- Consultas
+
+create view v_totalPedidos as
+	select
+		o.orderId,
+		o.orderDate,
+		e.firstName,
+		sum(d.quantity * p.price) as Total
+	from
+		Orders o
+	inner join
+		OrderDetails d on d.OrderID = o.OrderID
+	inner join
+		Employees e on e.EmployeeID = o.EmployeeID
+	inner join
+		Products p on p.ProductID = d.ProductID
+	group by
+		o.OrderID, o.OrderDate, e.FirstName
 
 select * from v_totalPedidos
-order by Total desc
+
+create view v_DetalhesPedidos as
+	select
+		o.OrderId,
+		o.OrderDate,
+		e.FirstName,
+		p.ProductName,
+		c.CategoryName,
+		d.Quantity,
+		p.Price,
+		sum(Quantity * Price) as Total
+	from
+		Orders o
+	inner join
+		OrderDetails d on d.OrderID = o.OrderID
+	inner join
+		Employees e on e.EmployeeID = o.EmployeeID
+	inner join
+		Products p on p.ProductID = d.ProductID
+	inner join
+		Categories c on c.CategoryID = p.CategoryID
+	group by
+		o.OrderId,
+		o.OrderDate,
+		e.FirstName,
+		p.ProductName,
+		c.CategoryName,
+		d.Quantity,
+		p.Price;
+
+select * from v_DetalhesPedidos

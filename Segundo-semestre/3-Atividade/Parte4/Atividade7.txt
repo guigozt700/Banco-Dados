@@ -1,0 +1,130 @@
+Criar Views para todas consultas abaixo:
+
+
+063. Crie uma view chamada v_TotalPedidos que retorne as seguintes informações:
+
+
+o orderId (ID do pedido)
+
+o orderDate (data do pedido)
+
+o firstName (nome do funcionário responsável pelo pedido)
+
+o Total (valor total do pedido, calculado como quantidade do produto multiplicada pelo preço do produto)
+
+A view deve:
+
+o Fazer os JOINs corretos entre Orders, Employees, OrderDetails e Products.
+
+o Agrupar os resultados por pedido (orderId, orderDate e firstName).
+
+o Ordenar os resultados pelo valor total (Total) em ordem decrescente.
+
+Dica: utilize SUM(d.quantity * p.price) para calcular o valor total do pedido.
+
+
+064. Crie uma view chamada v_DetalhesPedidos que retorne as seguintes informações para cada pedido:
+
+o OrderID – ID do pedido
+
+o OrderDate – data do pedido
+
+o FirstName – nome do funcionário responsável
+
+o ProductName – nome do produto
+
+o CategoryName – categoria do produto
+
+o Quantity – quantidade do produto no pedido
+
+o Price – preço unitário do produto
+
+o Total Produto – valor total do produto no pedido (Quantity * Price)
+
+A view deve:
+
+o Fazer os JOINs corretos entre Orders, Employees, OrderDetails, Products e Categories.
+
+o Mostrar o total por produto, sem agrupar os pedidos.
+
+Dica: utilize d.Quantity * p.Price para calcular o total de cada produto no pedido.
+
+
+065. Total e média de vendas por cliente
+
+Crie uma view que mostre, para cada cliente, o nome do cliente, o total de vendas realizadas por ele e a média de vendas.
+
+Utilize as tabelas de pedidos, detalhes de pedidos, clientes e produtos.
+
+Agrupe os resultados por cliente e ordene pelo valor da média de vendas, do maior para o menor.
+
+
+066. Total e média de vendas por categoria de produto
+
+Crie uma view que mostre, para cada categoria de produto, o nome da categoria, o total de vendas dos produtos dessa categoria e a média de vendas.
+
+Utilize as tabelas de detalhes de pedidos, produtos e categorias.
+
+Agrupe os resultados pela categoria e ordene pelo valor da média de vendas, do maior para o menor.
+
+
+067. Total e média de vendas por empregado
+
+Crie uma view que mostre, para cada empregado, o nome completo do empregado, o total de vendas realizadas por ele e a média das vendas.
+
+Utilize as tabelas de pedidos, detalhes de pedidos, empregados e produtos.
+
+Agrupe os resultados por empregado e ordene pelo valor da média de vendas, do maior para o menor.
+
+
+068. Total e média de vendas por transportadora
+
+Crie uma view que mostre, para cada transportadora, o nome da transportadora, o total de vendas entregues por ela e a média das vendas.
+
+Utilize as tabelas de pedidos, detalhes de pedidos, transportadoras e produtos.
+
+Agrupe os resultados pela transportadora e ordene pelo valor da média de vendas, do maior para o menor.
+
+
+069. Total e média de vendas por produto
+
+Crie uma view que mostre, para cada produto, o nome do produto, o total de vendas e a média de vendas.
+
+Utilize as tabelas de detalhes de pedidos e produtos.
+
+Agrupe os resultados pelo produto e ordene pelo valor da média de vendas, do maior para o menor.
+
+
+070. Total de vendas por transportadora e produto
+
+Crie uma view que mostre, para cada combinação de transportadora e produto, o nome da transportadora, o nome do produto e o total de vendas.
+
+Utilize as tabelas de pedidos, detalhes de pedidos, transportadoras e produtos.
+
+Agrupe os resultados por transportadora e produto e ordene pelo total de vendas, do maior para o menor.
+
+
+071. Média de vendas por mês e ano
+
+Crie uma view que mostre a média de vendas por mês e ano, considerando a data de cada pedido.
+
+Utilize as tabelas de pedidos, detalhes de pedidos e produtos.
+
+Agrupe os resultados por ano e mês, e ordene do ano mais recente para o mais antigo.
+
+
+072. Informações de datas dos pedidos
+
+Crie uma view que mostre informações detalhadas de datas para cada pedido, incluindo:
+
+Mês do pedido
+
+Número do dia do ano do pedido
+
+Número do dia do ano atual
+
+Número do dia da semana atual
+
+Dia do mês atual
+
+Utilize a tabela de pedidos e funções de manipulação de data.
