@@ -131,6 +131,42 @@ group by
 	nome
 
 
+--11 *B
+select d.nome, count(f.id)
+from departamentos d
+left join
+	funcionarios f on d.id = f.departamento_id
+group by d.nome;
+
+--12 *A
+ SELECT AVG(salario) FROM funcionarios WHERE setor = 'TI';
+
+--13 *B
+-- Um registro (tupla)
+
+--14 *B
+--Não pode ser nula e deve ser única.
+
+--15 *B
+--Pode ser nula, desde que o relacionamento permita.
+
+--16 *A
+--Um cliente pode ter vários pedidos
+
+--17 *B 
+-- Cliente (1,N) — Pedido (1,1)
+
+--18 *B
+-- Uma tabela virtual baseada em uma consulta SQL
+
+--19 *B
+--Melhorar o desempenho das consultas.
+
+--20 *C
+--DROP VIEW vw_clientes;
+
+
+
 
 
 
