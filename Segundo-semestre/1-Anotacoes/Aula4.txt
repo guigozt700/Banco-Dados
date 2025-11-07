@@ -1,0 +1,60 @@
+O que é uma transação?
+->  Uma transação é um conjunto de operações que devem ser executadas como se fossem uma única ação no banco de dados.
+    Ou seja:
+        Tudo dá certo e é confirmado, ou nada é feito.
+
+    Pense em uma transação como uma promessa que o banco de dados faz:
+    “Eu só vou gravar essas mudanças se todas elas funcionarem.”
+
+Exemplo simples
+->  Imagine que você quer transferir R$100 da conta da Ana para a conta do Bruno.
+    
+    Essa operação envolve duas ações:
+    Tirar R$100 da conta da Ana
+        → saldo_ana = saldo_ana - 100
+
+    Colocar R$100 na conta do Bruno
+        → saldo_bruno = saldo_bruno + 100
+
+    Essas duas ações precisam acontecer juntas.
+    Se uma delas falhar (por exemplo, a conexão cai depois de tirar o dinheiro da Ana, mas antes de colocar na conta do Bruno), o banco precisa cancelar tudo — não é justo sumir com o dinheiro!
+
+As 4 propriedades das transações (ACID)
+->   Para garantir que tudo funcione bem, as transações seguem as propriedades ACID:
+
+| Letra | Nome             | Significado                                                                                                                             |
+| :---: | :--------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| **A** | **Atomicidade**  | Tudo ou nada: a transação é indivisível. Se algo der errado, o banco desfaz tudo (rollback).                                            |
+| **C** | **Consistência** | O banco de dados sempre vai de um estado **válido** para outro **válido**. As regras (como “saldo não pode ser negativo”) são mantidas. |
+| **I** | **Isolamento**   | Uma transação não interfere em outra que esteja acontecendo ao mesmo tempo.                                                             |
+| **D** | **Durabilidade** | Depois de confirmada (commit), a transação fica gravada de forma permanente, mesmo que o sistema caia.                                  |
+
+Etapas de uma transação
+
+-   BEGIN – Começa a transação.
+-   EXECUTA – Faz as operações (inserir, atualizar, deletar...).
+-   COMMIT – Confirma as mudanças se tudo der certo.
+-   ROLLBACK – Cancela tudo se algo der errado.
+
+    Exemplo em SQL:
+    
+    BEGIN TRANSACTION;
+
+    UPDATE contas SET saldo = saldo - 100 WHERE nome = 'Ana';
+    UPDATE contas SET saldo = saldo + 100 WHERE nome = 'Bruno';
+
+    COMMIT;
+
+    - Se algum UPDATE falhar, o banco faz:
+
+    ROLLBACK;
+
+E tudo volta ao estado original.
+
+Resumindo
+->  Uma transação é um “pacote de operações” que o banco de dados trata como uma só unidade — garantindo segurança, consistência e confiabilidade dos dados.
+
+Situação	O que acontece
+    Tudo funciona	O banco grava as mudanças (COMMIT).
+    Algo falha	O banco cancela tudo (ROLLBACK).
+

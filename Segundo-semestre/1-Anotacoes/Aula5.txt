@@ -1,0 +1,93 @@
+O que é uma procedure?
+->  Uma procedure (ou stored procedure) é um bloco de código SQL armazenado dentro do banco de dados, que você pode executar quando quiser.
+
+    Em outras palavras:
+    É como uma função (ou um “programinha”) que fica salva no banco e executa automaticamente uma sequência de comandos.
+
+Por que usar procedures?
+->  Imagina que você precisa rodar sempre a mesma sequência de comandos — por exemplo:
+    -   Atualizar saldo de uma conta,
+    -   Registrar uma transação,
+    -   Fazer cálculos complexos,
+    -   Gerar relatórios...
+    
+    Em vez de digitar tudo de novo toda vez, você cria uma procedure uma vez e depois só chama assim:
+
+    EXEC NomeDaProcedure;
+
+Exemplo básico
+
+->  Criando uma procedure:
+
+    CREATE PROCEDURE MostrarContas
+    AS
+    BEGIN
+        SELECT * FROM Contas;
+    END;    
+
+Agora, sempre que quiser ver as contas, basta executar:
+
+    EXEC MostrarContas;
+
+Isso executa o SELECT automaticamente.
+
+
+Procedures com parâmetros
+->  As procedures podem receber parâmetros, como funções.
+
+    Por exemplo, vamos criar uma que aumenta o saldo de uma conta:
+
+    CREATE PROCEDURE AumentarSaldo
+        @numero INT,
+        @valor DECIMAL(10,2)
+    AS
+    BEGIN
+        UPDATE Contas
+        SET saldo = saldo + @valor
+        WHERE numero = @numero;
+    END;
+
+Executando:
+    EXEC AumentarSaldo @numero = 123, @valor = 200.00;
+
+Isso adiciona R$200 ao saldo da conta 123.
+
+
+Procedures com lógica condicional
+
+->  Você também pode usar IF, BEGIN TRANSACTION, COMMIT, ROLLBACK, etc. dentro de uma procedure.
+    Assim, dá pra garantir que tudo seja executado de forma segura.
+
+Exemplo: transferência entre contas
+    CREATE PROCEDURE Transferir
+        @origem INT,
+        @destino INT,
+        @valor DECIMAL(10,2)
+    AS
+    BEGIN
+        BEGIN TRANSACTION;
+
+        -- verifica se a conta de origem tem saldo suficiente
+        DECLARE @saldo_origem DECIMAL(10,2);
+        SELECT @saldo_origem = saldo FROM Contas WHERE numero = @origem;
+
+        IF @saldo_origem < @valor
+        BEGIN
+            PRINT 'Saldo insuficiente. Transação cancelada.';
+            ROLLBACK;
+            RETURN;
+        END;
+
+        -- faz a transferência
+        UPDATE Contas SET saldo = saldo - @valor WHERE numero = @origem;
+        UPDATE Contas SET saldo = saldo + @valor WHERE numero = @destino;
+
+        COMMIT;
+        PRINT 'Transferência concluída com sucesso.';
+    END;
+
+Executando:
+    EXEC Transferir @origem = 123, @destino = 321, @valor = 150.00;
+
+✅ Se houver saldo suficiente, ele confirma a transação.
+❌ Se não houver, ele cancela com ROLLBACK.

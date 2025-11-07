@@ -1,75 +1,93 @@
-Views:
--> Tabela virtual baseada em um Select
--> Simplifica a percepção de cada usuário
--> Segurança, permitindo acesso restrito a certas funcionalidades ao usuario
--> Fornecer interface compativeis a outras versões
+O que é uma view?
 
--- Criar View ------------------------------------------
+Uma view (em português: visão) é como uma “janela” para os dados de uma ou mais tabelas.
 
-Create View 
-	v_Empregado as	--Nome da View
-select
-	NomeEmpr, DtNascimento, NomeDepto --Colunas
-from
-	Empregado	--Da tabela empregado
-inner join
-	Departamento	--Junta com Departamento
-on
-	Departamento.CodDepto = Empregado.CodDepto	--Onde a coluna Departamento.CodDepto seja igual a Empregado.CodDepto
+👉 Em vez de criar uma nova tabela, você cria uma view que mostra os dados de uma forma específica — normalmente usando uma consulta SQL (SELECT).
 
-select * from v_Empregado
+Ela não guarda dados de verdade (na maioria dos casos).
+Ela mostra os dados existentes de um jeito diferente.
 
--- Alterar View ------------------------------------------
+💡 Analogia simples
 
-alter view 
-	v_Empregado as
-select 
-	NomeEmpr, NomeDepto
-from
-	Empregado
-inner join
-	Departamento
-on
-	Departamento.CodDepto = Empregado.CodDepto
+Imagine que o banco de dados é uma planilha gigante com muitas abas (tabelas).
+Uma view é como uma aba especial que mostra só as colunas e linhas que você quer ver — sem copiar os dados originais.
 
+📋 Exemplo prático
 
--- Criação de variavis -------------------------
+Suponha que temos uma tabela chamada clientes:
 
-declare @codigo int, @nome varchar(50)
-set @codigo = 1
-set @nome = 'Manuel'
+| id | nome  | cidade    | idade | saldo |
+| -- | ----- | --------- | ----- | ----- |
+| 1  | Ana   | São Paulo | 30    | 500   |
+| 2  | Bruno | Rio       | 25    | 1200  |
+| 3  | Carla | São Paulo | 40    | 800   |
 
-declare @codigo2 int = 10
-declare @nome2 varchar(50) = 'José Maria'
+E queremos ver somente os clientes de São Paulo.
 
-select @nome2 as variavel
+Podemos criar uma view assim:
+
+CREATE VIEW clientes_sp AS
+SELECT nome, idade, saldo
+FROM clientes
+WHERE cidade = 'São Paulo';
 
 
-Funções:
+Agora, quando você quiser ver só esses clientes, basta usar:
 
-ASCII(string)
--> Vai retonar o codigo numérico do primeiro caractere
+SELECT * FROM clientes_sp;
 
-Char(int)
--> Vai retonar p caracter referente a um número
+| nome  | idade | saldo |
+| ----- | ----- | ----- |
+| Ana   | 30    | 500   |
+| Carla | 40    | 800   |
 
-Charindex(substring, string, posição inicial)
--> Vai retornar a posição da substring buscada na substring
 
-Left(string, n)
--> Retorna os n primeiros caratcteres a esquerda
+Resumo: o que é uma view?
 
-Len(string)
--> Retorna a quantidade(tamanho)
+| Conceito                            | Explicação                                                                                      |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **É baseada em SELECT**             | A view é construída a partir de uma consulta.                                                   |
+| **Não armazena dados (geralmente)** | Ela mostra os dados das tabelas originais.                                                      |
+| **Facilita consultas**              | Você pode criar views para consultas complexas e depois usá-las como se fossem tabelas simples. |
+| **Aumenta a segurança**             | Pode mostrar só certas colunas ou linhas, escondendo dados sensíveis.                           |
+| **Atualizável (às vezes)**          | Algumas views permitem `INSERT`, `UPDATE`, e `DELETE`, mas com restrições.                      |
 
-LTRIM(string)
--> Remove os espaços em branco a esquerda
 
-PATINDEX(%padrão%, string)
--> Retorna a posição do primeiro caratere do padrão da string
+Exemplo mais útil
 
-REVERSE(string)
--> Retorna a string invertida
+Digamos que você tem várias tabelas:
 
-RIGHT(string, int)
--> Retorna os caracteres a direita da string, int define a partir de qual numero
+clientes
+
+pedidos
+
+produtos
+
+E quer ver um “resumo de vendas por cliente”.
+Em vez de escrever um JOIN complicado toda vez, você pode criar uma view:
+
+CREATE VIEW resumo_vendas AS
+SELECT c.nome AS cliente,
+       COUNT(p.id) AS total_pedidos,
+       SUM(p.valor) AS total_gasto
+FROM clientes c
+JOIN pedidos p ON c.id = p.id_cliente
+GROUP BY c.nome;
+
+
+Agora, basta:
+
+SELECT * FROM resumo_vendas;
+
+🔐 Benefícios de usar views
+
+✅ Simplificam consultas complexas
+✅ Melhoram a segurança (ocultam dados sensíveis)
+✅ Facilitam a manutenção do código
+✅ Podem servir de “camada lógica” entre a aplicação e o banco
+
+⚠️ Cuidados
+
+⚠️ Views não melhoram desempenho por si só (elas não são índices).
+⚠️ Algumas views complexas podem deixar as consultas mais lentas, pois precisam processar o SELECT original toda vez.
+⚠️ Views atualizáveis têm restrições — por exemplo, não podem envolver GROUP BY, JOIN, ou funções agregadas.
