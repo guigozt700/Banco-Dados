@@ -54,120 +54,207 @@ CREATE TABLE Aluno(
 --InstituicaoEnsino
 INSERT INTO instituicaoEnsino
 (nome_InstituicaoEnsino, categoria_Administrativa, organizacaoAcademica, municipio, uf) VALUES
-('Universidade Federal de São Paulo', 'Pública Federal', 'Universidade', 'São Paulo', 'SP'),
-('Fatec Diadema - Luigi Papaiz', 'Pública Estadual', 'Faculdade de Tecnologia', 'Diadema', 'SP'),
-('Universidade Federal de Sao Paulo', 'Publica', 'Universidade', 'Sao Paulo', 'SP'),
-('Universidade Estadual de Campinas', 'Publica', 'Universidade', 'Campinas', 'SP'),
-('Faculdade Privada de Tecnologia XYZ', 'Privada', 'Faculdade', 'Sao Paulo', 'SP'),
-('Universidade Federal do Rio de Janeiro', 'Publica', 'Universidade', 'Rio de Janeiro', 'RJ'),
-('Instituto Superior Privado RJ', 'Privada', 'Faculdade', 'Niteroi', 'RJ'),
-('Universidade Federal de Minas Gerais', 'Publica', 'Universidade', 'Belo Horizonte', 'MG'),
-('Centro Universitario do Espirito Santo', 'Privada', 'Centro', 'Vitoria', 'ES');
+('Universidade de São Paulo (USP)', 'Pública Estadual', 'Universidade', 'São Paulo', 'SP'),
+('Universidade Paulista (UNIP)', 'Privada', 'Universidade', 'São Paulo', 'SP'),
+('Centro Universitário FMU', 'Privada', 'Centro Universitário', 'São Paulo', 'SP'),
+('Universidade Presbiteriana Mackenzie', 'Privada', 'Universidade', 'São Paulo', 'SP'),
+('Pontifícia Universidade Católica de São Paulo (PUC-SP)', 'Privada', 'Universidade', 'São Paulo', 'SP'),
+('FATEC São Paulo', 'Pública Estadual', 'Faculdade de Tecnologia', 'São Paulo', 'SP'),
+('FATEC Zona Leste', 'Pública Estadual', 'Faculdade de Tecnologia', 'São Paulo', 'SP'),
+('Centro Universitário SENAC São Paulo', 'Privada', 'Centro Universitário', 'São Paulo', 'SP'),
+('Universidade São Judas Tadeu', 'Privada', 'Universidade', 'São Paulo', 'SP'),
+('Anhanguera São Paulo', 'Privada', 'Universidade', 'São Paulo', 'SP');
 
 -- Cursos
-INSERT INTO Curso
-(id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
----- 1. Universidade Federal de São Paulo
-(1, 'Ciência da Computação', 'Bacharelado', 'Presencial', 100, 'Tecnologia da Informação'),
-(1, 'Engenharia Biomédica', 'Bacharelado', 'Presencial', 60, 'Engenharia'),
 
--- 2. Fatec Diadema - Luigi Papaiz
-(2, 'Desenvolvimento de Software Multiplataforma', 'Técnologo', 'Presencial', 80, 'Tecnologia da Informação'),
-(2, 'Gestão de Produção Industral', 'Técnologo', 'Presencial', 60, 'Gestão'),
-(2, 'Cosméticos', 'Técnologo', 'Semi Presencial', 100, 'Cosmtologia'),
+-- USP
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(1, 'Ciência da Computação', 'Bacharelado', 'Presencial', 60, 'Tecnologia'),
+(1, 'Engenharia de Computação', 'Bacharelado', 'Presencial', 40, 'Engenharias'),
+(1, 'Sistemas de Informação', 'Bacharelado', 'Presencial', 50, 'Tecnologia');
 
--- 3. Universidade Federal de São Paulo (duplicada - mantida para exemplo)
-(3, 'Medicina', 'Bacharelado', 'Presencial', 50, 'Saúde'),
+-- UNIP
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(2, 'Análise e Desenvolvimento de Sistemas', 'Tecnólogo', 'Presencial', 80, 'Tecnologia'),
+(2, 'Gestão da Tecnologia da Informação', 'Tecnólogo', 'Presencial', 60, 'Tecnologia'),
+(2, 'Ciência da Computação', 'Bacharelado', 'Presencial', 70, 'Tecnologia');
 
--- 4. Universidade Estadual de Campinas
-(4, 'Engenharia de Software', 'Bacharelado', 'Presencial', 120, 'Tecnologia da Informação'),
-(4, 'Matemática Aplicada', 'Licenciatura', 'Presencial', 90, 'Ciências Exatas'),
+-- FMU
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(3, 'Sistemas de Informação', 'Bacharelado', 'Presencial', 60, 'Tecnologia'),
+(3, 'Design Digital', 'Bacharelado', 'Presencial', 50, 'Artes e Design'),
+(3, 'Engenharia de Software', 'Bacharelado', 'Presencial', 40, 'Tecnologia');
 
--- 5. Faculdade Privada de Tecnologia XYZ
-(5, 'Sistemas para Internet', 'Tecnólogo', 'EAD', 150, 'Tecnologia da Informação'),
-(5, 'Gestão da Informação', 'Tecnólogo', 'EAD', 120, 'Gestão'),
+-- Mackenzie
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(4, 'Engenharia de Software', 'Bacharelado', 'Presencial', 50, 'Tecnologia'),
+(4, 'Ciência da Computação', 'Bacharelado', 'Presencial', 40, 'Tecnologia'),
+(4, 'Sistemas de Informação', 'Bacharelado', 'Presencial', 60, 'Tecnologia');
 
--- 6. Universidade Federal do Rio de Janeiro
-(6, 'Engenharia de Computação', 'Bacharelado', 'Presencial', 100, 'Engenharia'),
+-- PUC-SP
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(5, 'Ciências da Computação', 'Bacharelado', 'Presencial', 40, 'Tecnologia'),
+(5, 'Jogos Digitais', 'Tecnólogo', 'Presencial', 50, 'Tecnologia'),
+(5, 'Engenharia da Computação', 'Bacharelado', 'Presencial', 35, 'Tecnologia');
 
--- 7. Instituto Superior Privado RJ
-(7, 'Análise e Desenvolvimento de Sistemas', 'Tecnólogo', 'EAD', 120, 'Tecnologia da Informação'),
+-- FATEC São Paulo
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(6, 'Análise e Desenvolvimento de Sistemas', 'Tecnólogo', 'Presencial', 80, 'Tecnologia'),
+(6, 'Banco de Dados', 'Tecnólogo', 'Presencial', 40, 'Tecnologia'),
+(6, 'Gestão da Tecnologia da Informação', 'Tecnólogo', 'Presencial', 40, 'Tecnologia');
 
--- 8. Universidade Federal de Minas Gerais
-(8, 'Ciência da Computação', 'Bacharelado', 'Presencial', 100, 'Tecnologia da Informação'),
-(8, 'Administração', 'Bacharelado', 'Presencial', 80, 'Gestão'),
+-- FATEC Zona Leste
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(7, 'Desenvolvimento de Software Multiplataforma', 'Tecnólogo', 'Presencial', 40, 'Tecnologia'),
+(7, 'Sistemas para Internet', 'Tecnólogo', 'Presencial', 40, 'Tecnologia'),
+(7, 'Big Data para Negócios', 'Tecnólogo', 'Presencial', 40, 'Tecnologia');
 
--- 9. Centro Universitário do Espírito Santo
-(9, 'Sistemas de Informação', 'Bacharelado', 'EAD', 100, 'Tecnologia da Informação'),
-(9, 'Engenharia de Produção', 'Bacharelado', 'Presencial', 70, 'Engenharia');
+-- SENAC SP
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(8, 'Sistemas de Informação', 'Bacharelado', 'Presencial', 50, 'Tecnologia'),
+(8, 'Jogos Digitais', 'Tecnólogo', 'Presencial', 40, 'Tecnologia'),
+(8, 'Ciência da Computação', 'Bacharelado', 'Presencial', 40, 'Tecnologia');
+
+-- São Judas
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(9, 'Engenharia de Software', 'Bacharelado', 'Presencial', 40, 'Tecnologia'),
+(9, 'Sistemas de Informação', 'Bacharelado', 'Presencial', 60, 'Tecnologia'),
+(9, 'Análise e Desenvolvimento de Sistemas', 'Tecnólogo', 'Presencial', 70, 'Tecnologia');
+
+-- Anhanguera
+INSERT INTO Curso (id_InstituicaoEnsino, nome_Curso, grau_Academico, modalidade, numero_Vagas, area) VALUES
+(10, 'Análise e Desenvolvimento de Sistemas', 'Tecnólogo', 'Presencial', 100, 'Tecnologia'),
+(10, 'Engenharia de Computação', 'Bacharelado', 'Presencial', 50, 'Tecnologia'),
+(10, 'Ciência da Computação', 'Bacharelado', 'Presencial', 60, 'Tecnologia');
 
 -- Alunos
-INSERT INTO Aluno
-(id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao) VALUES
+INSERT INTO Aluno (id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao) VALUES
+-- USP
+(1, 2022, 'Masculino', 'Branco', 20, 'Cursando'),
+(2, 2021, 'Feminino', 'Parda', 22, 'Cursando'),
 
--- 1. Universidade Federal de São Paulo (id_Instituicao = 1)
-(1, 2023, 'Masculino', 'Pardo', 21, 'Cursando'),
-(2, 2022, 'Feminino', 'Branca', 24, 'Concluído'),
-(1, 2015, 'Feminino', 'Negra', 38, 'Cursando'); 
+-- UNIP
+(4, 2023, 'Masculino', 'Negro', 19, 'Cursando'),
+(5, 2022, 'Feminino', 'Branca', 25, 'Trancado'),
+(6, 2021, 'Feminino', 'Parda', 30, 'Cursando'),
 
--- 2. Fatec Diadema - Luigi Papaiz (id_Instituicao = 2)
-INSERT INTO Aluno (id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao)
-VALUES
-(3, 2023, 'Masculino', 'Pardo', 21, 'Cursando'),
-(3, 2022, 'Feminino', 'Branca', 24, 'Concluído'),
-(4, 2018, 'Masculino', 'Negro', 33, 'Cursando'),
-(5, 2020, 'Feminino', 'Parda', 35, 'Cursando');
+-- FMU
+(7, 2022, 'Masculino', 'Branco', 27, 'Cursando'),
+(8, 2023, 'Feminino', 'Negra', 18, 'Cursando'),
+(9, 2020, 'Masculino', 'Pardo', 31, 'Formado'),
 
--- 3. UNICAMP (id_Instituicao = 4)
-INSERT INTO Aluno (id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao)
-VALUES
-(7, 2022, 'Masculino', 'Branca', 23, 'Trancado'),
-(8, 2023, 'Feminino', 'Amarela', 21, 'Cursando'),
-(8, 2017, 'Masculino', 'Pardo', 36, 'Cursando');
+-- Mackenzie
+(10, 2023, 'Feminino', 'Branca', 19, 'Cursando'),
+(11, 2021, 'Masculino', 'Negro', 24, 'Cursando'),
+(12, 2020, 'Masculino', 'Branco', 29, 'Desvinculado'),
 
--- 4. Faculdade Privada XYZ (id_Instituicao = 5)
-INSERT INTO Aluno (id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao)
-VALUES
-(9, 2023, 'Feminino', 'Branca', 25, 'Cursando'),
-(10, 2024, 'Masculino', 'Pardo', 19, 'Cursando'),
-(9, 2015, 'Feminino', 'Negra', 40, 'Cursando');
+-- PUC-SP
+(13, 2022, 'Feminino', 'Branca', 26, 'Cursando'),
+(14, 2023, 'Masculino', 'Negro', 20, 'Cursando'),
+(15, 2021, 'Feminino', 'Parda', 28, 'Trancado'),
 
--- 5. Universidade Federal do Rio de Janeiro (id_Instituicao = 6)
-INSERT INTO Aluno (id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao)
-VALUES
-(11, 2022, 'Masculino', 'Branca', 23, 'Cursando'),
-(11, 2016, 'Feminino', 'Parda', 38, 'Cursando');
+-- FATEC São Paulo
+(16, 2023, 'Masculino', 'Branco', 21, 'Cursando'),
+(17, 2022, 'Feminino', 'Negra', 23, 'Cursando'),
 
--- 6. Instituto Privado RJ (id_Instituicao = 7)
-INSERT INTO Aluno (id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao)
-VALUES
-(12, 2024, 'Feminino', 'Parda', 20, 'Cursando'),
-(12, 2013, 'Masculino', 'Negro', 42, 'Cursando');
+-- FATEC Zona Leste
+(19, 2021, 'Masculino', 'Pardo', 35, 'Cursando'),
 
--- 7. Universidade Federal de Minas Gerais (id_Instituicao = 8)
-INSERT INTO Aluno (id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao)
-VALUES
-(13, 2021, 'Masculino', 'Negro', 24, 'Concluído'),
-(14, 2023, 'Feminino', 'Branca', 21, 'Cursando'),
-(13, 2010, 'Feminino', 'Parda', 39, 'Cursando');
+-- SENAC SP
+(22, 2023, 'Feminino', 'Negra', 19, 'Cursando'),
 
--- 8. Centro Universitário do Espírito Santo (id_Instituicao = 9)
-INSERT INTO Aluno (id_Curso, ano_Ingresso, sexo, cor_Raca, idade, situacao)
-VALUES
-(15, 2024, 'Masculino', 'Branca', 20, 'Cursando'),
-(16, 2023, 'Feminino', 'Parda', 22, 'Cursando'),
-(16, 2012, 'Masculino', 'Negro', 41, 'Cursando');
+-- São Judas
+(25, 2022, 'Masculino', 'Branco', 32, 'Cursando'),
+
+-- Anhanguera
+(28, 2021, 'Feminino', 'Parda', 34, 'Cursando');
+
 
 -- Consultas
+-- 1. Listar todas as escolas publicas
+SELECT *
+FROM instituicaoEnsino
+WHERE categoria_Administrativa LIKE '%Pública%'
 
--- 1. Cursos e suas respectivas instituições
-SELECT
-	c.nome_Curso AS 'Nome Curso', 
-	i.nome_InstituicaoEnsino AS 'Nome Instiuição de Ensino',
-	i.uf AS 'UF',
-	c.modalidade AS 'Modalidade ensino'
+--2. Alunos com idade entre 25 e 30 anos
+SELECT *
+FROM Aluno
+WHERE idade BETWEEN 25 AND 30
+
+--3. Cursos com o nome da instituição
+SELECT 
+	c.nome_Curso AS 'Nome Curso',
+	c.modalidade AS 'Modalidade',
+	i.nome_InstituicaoEnsino AS 'Nome Instituição'
 FROM Curso c
 	JOIN instituicaoEnsino i
-		on c.id_InstituicaoEnsino = i.id_InstituicaoEnsino
+		ON c.id_InstituicaoEnsino = i.id_InstituicaoEnsino
 
--- 2. Total de alunos por curso
+--4. Quantidade de cursos por instituição
+SELECT 
+	i.nome_InstituicaoEnsino AS 'Nome Instituição',
+	COUNT(c.id_Curso) AS 'Total Cursos'
+FROM instituicaoEnsino i
+	LEFT JOIN Curso c
+		ON i.id_InstituicaoEnsino = c.id_InstituicaoEnsino
+GROUP BY i.nome_InstituicaoEnsino
+
+--5. Total de alunos por instituição (having > 2)
+SELECT 
+	i.nome_InstituicaoEnsino AS 'Nome Instituição',
+	COUNT(a.id_Aluno) AS 'Total Alunos'
+FROM instituicaoEnsino i
+	LEFT JOIN Curso c 
+		ON i.id_InstituicaoEnsino = c.id_InstituicaoEnsino
+	LEFT JOIN Aluno a
+		ON a.id_Curso = c.id_Curso
+GROUP BY i.nome_InstituicaoEnsino
+HAVING COUNT(a.id_Aluno) > 2
+
+--6. Cursos acima da média de vagas
+SELECT 
+	nome_Curso, numero_Vagas
+FROM Curso
+WHERE numero_Vagas > (
+	SELECT AVG(numero_Vagas)
+		FROM Curso
+)
+
+--7. Comparar cursos de tecnologia entre instituições
+SELECT i.nome_InstituicaoEnsino,
+	COUNT(c.id_Curso) AS 'Cursos Tecnologia'
+FROM instituicaoEnsino i
+	JOIN Curso c
+		ON i.id_InstituicaoEnsino = c.id_InstituicaoEnsino
+WHERE c.area LIKE 'Tec%'
+GROUP BY i.nome_InstituicaoEnsino
+
+--8. View de alunos com curso + instituição
+CREATE VIEW v_ALunoCurso AS
+	SELECT 
+		a.id_Aluno, a.sexo, a.idade, a.situacao,
+		c.nome_Curso, c.modalidade, c.area,
+		i.nome_InstituicaoEnsino, i.categoria_Administrativa
+	FROM Aluno a
+	JOIN Curso c
+		ON a.id_Curso = c.id_Curso
+	JOIN instituicaoEnsino i
+		ON i.id_InstituicaoEnsino = c.id_InstituicaoEnsino
+
+SELECT * 
+	FROM v_ALunoCurso
+WHERE situacao = 'Desvinculado' 
+
+--9. Função para caluclar idade media por curso
+CREATE FUNCTION f_calularIdadeCurso(@idCurso INT)
+	RETURNS DECIMAL(5,2)
+	AS
+	BEGIN
+		DECLARE @media DECIMAL(5,2)
+		SELECT @media = AVG(idade)
+			FROM Aluno
+		WHERE id_Curso = @idCurso
+	RETURN @media
+END
+
+SELECT dbo.f_calularIdadeCurso(1) AS 'Idade Média'
