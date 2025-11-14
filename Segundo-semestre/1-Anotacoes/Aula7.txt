@@ -1,0 +1,50 @@
+O que é backup em banco de dados?
+->  Backup é uma cópia de segurança dos dados, feita para que você possa recuperar tudo caso algo dê errado.
+    É como tirar uma foto do banco de dados naquele momento, para poder voltar a ela depois.
+
+Em uma frase:
+->  Backup é a cópia do banco de dados usada para recuperar informações em caso de falha, erro humano ou perda de dados.
+
+Por que fazer backup?
+->  Porque coisas podem dar errado:
+    -   o servidor pode quebrar
+    -   alguém pode apagar dados sem querer
+    -   pode acontecer um ataque hacker
+    -   pode ocorrer corrupção no banco
+    -   atualizações podem falhar
+
+    Ter um backup significa ter um plano B.
+
+Tipos de backup (bem simples)
+
+    1. Backup completo (Full)
+    ->  Uma cópia total de todo o banco.
+
+    🟢 Mais seguro
+    🔴 Mais lento e maior
+
+    2. Backup incremental
+    ->  Faz backup só do que mudou desde o último backup (incremental ou full).
+
+    🟢 Rápido e ocupa pouco espaço
+    🔴 Para restaurar tudo, precisa de várias partes
+
+    3. Backup diferencial
+    ->  Salva tudo o que mudou desde o último backup completo.
+
+    🟢 Mais rápido que o completo
+    🔴 Fica cada vez maior até o próximo full
+
+Restauro (Restore)
+->  É o processo de recolocar o backup no banco, trazendo os dados de volta.
+
+    -   Backup = fazer a cópia
+    -   Restore = usar a cópia
+
+Processos comuns em qualquer SGBD
+
+-   Gerar backup completo
+-   Gerar backups agendados
+-   Restaurar o banco a partir de um backup
+-   Verificar integridade do backup
+-   Armazenar backups em local seguro

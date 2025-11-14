@@ -1,0 +1,72 @@
+Controle de acesso
+
+->  É o jeito que o banco de dados usa para decidir quem pode ver, usar ou modificar as informações.
+    
+    É como ter chaves e portas:
+    -   Algumas pessoas podem abrir a porta e só olhar (ler).
+    -   Outras podem entrar e mexer nos móveis (editar).
+    -   Outras podem entrar, mexer e até demolir/reestruturar o cômodo (administrar).
+
+->  O banco controla quem pode fazer o quê, para garantir:
+    -   segurança
+    -   organização
+    -   que ninguém mexa no que não deveria
+
+Em uma frase:
+->  Controle de acesso é o conjunto de permissões que dizem quem pode acessar quais dados e o que cada pessoa pode fazer com eles.
+
+1. CREATE USER
+
+Cria um novo usuário no banco.
+
+CREATE USER joao IDENTIFIED BY senha123;
+
+🔧 2. ALTER USER
+
+Altera propriedades de um usuário (senha, configurações etc.).
+
+ALTER USER joao IDENTIFIED BY novaSenha;
+
+❌ 3. DROP USER
+
+Remove um usuário do sistema.
+
+DROP USER joao;
+
+🎭 4. CREATE ROLE
+
+Cria um papel (role) que agrupa permissões.
+
+CREATE ROLE gerente;
+
+➕ 5. GRANT (o mais importante!)
+
+Concede permissões a usuários ou roles.
+
+Exemplos comuns:
+
+Dar permissão para consultar uma tabela
+
+GRANT SELECT ON clientes TO joao;
+
+
+Dar permissão para inserir dados
+
+GRANT INSERT ON vendas TO joao;
+
+
+Dar um papel para um usuário
+
+GRANT gerente TO joao;
+
+➖ 6. REVOKE
+
+Remove permissões.
+
+REVOKE SELECT ON clientes FROM joao;
+
+🏢 7. DENY (SQL Server)
+
+Bloqueia explicitamente o acesso, mesmo se o usuário tiver permissão via role.
+
+DENY SELECT ON clientes TO joao;
